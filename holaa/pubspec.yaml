@@ -1,8 +1,8 @@
 name: holaa
-description: A new Flutter package project.
+description: A Flutter Package to easily integrate hola onto flutter apps.
 version: 0.0.1
-author:
-homepage:
+author: Pranoy Dev<devpranoy@gmail.com>
+homepage: https://github.com/innovationincubatoradvisory/holaa-flutter.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
