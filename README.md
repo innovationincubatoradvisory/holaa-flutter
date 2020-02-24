@@ -4,6 +4,6 @@ Flutter package for hola  https://www.holaa.ai/
 
 # Screenshots
 
-![holaa android](hola/holaa-android.jpeg)
+<img src="holaa/holaa-android.JPEG" alt="android" width="200"/>
 
-![holaa ios](hola/holaa-ios.png)
+<img src="holaa/holaa-ios.png" alt="ios" width="200"/>
