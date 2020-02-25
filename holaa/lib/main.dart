@@ -1,13 +1,12 @@
 import 'dart:core';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/Constant/Constant.dart';
-import 'package:flutter_chat_ui/Screens/SplashScreen.dart';
-import 'package:flutter_chat_ui/Screens/ChatScreen.dart';
+import 'package:holaa/Screens/ChatScreen.dart';
+import 'package:holaa/Utils/auth.dart';
 
-main() {
+main(String projectName) {
+  var auth = new Auth(projectName);
   runApp(new MaterialApp(
-    title: 'Fluter',
+    title: 'Holaa',
     debugShowCheckedModeBanner: false,
     theme: new ThemeData(
       accentColor: Colors.blue,
@@ -15,10 +14,9 @@ main() {
       primaryColorDark: Colors.white,
       fontFamily: 'Gamja Flower',
     ),
-    home: new SplashScreen(),
+    home: new MyChatScreen(auth: auth),
     routes: <String, WidgetBuilder>{
-      ANIMATED_SPLASH: (BuildContext context) => new SplashScreen(),
-      CHAT_SCREEN: (BuildContext context) => new MyChatScreen()
+      '/MyChatScreen': (BuildContext context) => new MyChatScreen(auth: auth),
     },
   ));
 }

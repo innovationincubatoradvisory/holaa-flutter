@@ -33,9 +33,9 @@ class Message extends StatelessWidget {
                         new Container(
                           margin: EdgeInsets.only(left: 6.0),
                           decoration: new BoxDecoration(
-                            color: Color(0xffd6d6d6),
+                            color: Color(0xffb43e67),
                             border: new Border.all(
-                                color: Color(0xffd6d6d6),
+                                color: Color(0xffb43e67),
                                 width: .25,
                                 style: BorderStyle.solid),
                             borderRadius: BorderRadius.only(
@@ -52,7 +52,7 @@ class Message extends StatelessWidget {
                             style: new TextStyle(
                               fontFamily: 'Gamja Flower',
                               fontSize: 20.0,
-                              color: Color(0xff000000),
+                              color: Color(0xffffffff),
                             ),
                           ),
                           width: 180.0,
@@ -64,9 +64,9 @@ class Message extends StatelessWidget {
                     new Container(
                       margin: EdgeInsets.only(left: 6.0),
                       decoration: new BoxDecoration(
-                        color: Color(0xffd6d6d6),
+                        color: Color(0xffb43e67),
                         border: new Border.all(
-                            color: Color(0xffd6d6d6),
+                            color: Color(0xffb43e67),
                             width: .25,
                             style: BorderStyle.solid),
                         borderRadius: BorderRadius.only(
@@ -83,7 +83,7 @@ class Message extends StatelessWidget {
                         dateTime,
                         style: new TextStyle(
                           fontSize: 8.0,
-                          color: Color(0xff000000),
+                          color: Color(0xffffffff),
                         ),
                       ),
                       width: 180.0,
@@ -112,9 +112,9 @@ class Message extends StatelessWidget {
                         new Container(
                           margin: EdgeInsets.only(right: 6.0),
                           decoration: new BoxDecoration(
-                            color: Color(0xffef5350),
+                            color: Color(0xff4b2e60),
                             border: new Border.all(
-                                color: Color(0xffef5350),
+                                color: Color(0xff4b2e60),
                                 width: .25,
                                 style: BorderStyle.solid),
                             borderRadius: BorderRadius.only(
@@ -143,9 +143,9 @@ class Message extends StatelessWidget {
                     new Container(
                       margin: EdgeInsets.only(right: 6.0),
                       decoration: new BoxDecoration(
-                        color: Color(0xffef5350),
+                        color: Color(0xff4b2e60),
                         border: new Border.all(
-                            color: Color(0xffef5350),
+                            color: Color(0xff4b2e60),
                             width: .25,
                             style: BorderStyle.solid),
                         borderRadius: BorderRadius.only(

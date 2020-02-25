@@ -1,3 +1,3 @@
-## [0.0.1] - 2020-02-22
+## [0.0.1] - 2020-02-26
  
-* Flutter Integration for Holaa.ai 
+* Chatbot Initialisation - Alpha verison
