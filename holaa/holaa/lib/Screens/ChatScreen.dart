@@ -1,15 +1,18 @@
+import 'dart:convert';
 import 'dart:core';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:holaa/Utils/Message.dart';
+import 'package:holaa/Utils/auth.dart';
 
 class MyChatScreen extends StatefulWidget {
-  const MyChatScreen({Key key, this.title}) : super(key: key);
+  const MyChatScreen({Key key, this.title, @required this.auth})
+      : super(key: key);
   final String title;
-
+  final Auth auth;
   @override
   _MyChatState createState() => new _MyChatState();
 }
@@ -23,17 +26,17 @@ class _MyChatState extends State<MyChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Auth auth = widget.auth;
     DateTime time = DateTime.now();
     String formattedDate = DateFormat('yyyy-MM-dd hh:mm').format(time);
 
     return new Scaffold(
         appBar: new AppBar(
-          title: const Text(
-            'Holaa FAQ',
+          title: Text(
+            auth.projectName.toUpperCase() + " FAQ",
             style: TextStyle(color: Color(0xff4b2e60)),
             textAlign: TextAlign.center,
           ),
-          
         ),
         body: new Container(
             width: double.infinity,
@@ -62,21 +65,6 @@ class _MyChatState extends State<MyChatScreen> {
                             margin: const EdgeInsets.symmetric(horizontal: 2.0),
                             child: new Row(
                               children: <Widget>[
-                                //left send button
-
-                                new Container(
-                                  width: 48.0,
-                                  height: 48.0,
-                                  child: new IconButton(
-                                      icon: Image.asset(
-                                          "assets/images/send_in.png"),
-                                      onPressed: () => _sendMsg(
-                                          _textController.text,
-                                          'left',
-                                          formattedDate)),
-                                ),
-
-                                //Enter Text message here
                                 new Flexible(
                                   child: new TextField(
                                     controller: _textController,
@@ -108,10 +96,10 @@ class _MyChatState extends State<MyChatScreen> {
             )));
   }
 
-  void _sendMsg(String msg, String messageDirection, String date) {
+  void _respondMsg(String msg, String messageDirection, String date) {
     if (msg.length == 0) {
       Fluttertoast.showToast(
-          msg: "Please Enter Message",
+          msg: "Error, Sorry!",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIos: 1,
@@ -129,9 +117,58 @@ class _MyChatState extends State<MyChatScreen> {
     }
   }
 
+  void _sendMsg(String msg, String messageDirection, String date) async {
+    if (msg.length == 0) {
+      Fluttertoast.showToast(
+          msg: "Please Enter Message",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIos: 1,
+          backgroundColor: Colors.blue);
+    } else {
+      _textController.clear();
+      Message message = new Message(
+        msg: msg,
+        direction: messageDirection,
+        dateTime: date,
+      );
+
+      setState(() {
+        _messages.insert(0, message);
+      });
+
+      String responder = await sendHolaa(
+          msg, widget.auth.token, widget.auth.sessionID, widget.auth.projectID);
+      var responder1 = jsonDecode(responder);
+      print(responder1);
+      var response = responder1['queryResult']['fulfillmentText'];
+
+      _respondMsg(response, 'left', date);
+    }
+  }
+
+  sendHolaa(
+      String msg, String token, String sessionID, String projectID) async {
+    var url =
+        'https://dialogflow.googleapis.com/v2beta1/projects/$projectID/agent/sessions/$sessionID:detectIntent';
+    var data =
+        '{"queryInput": { "text": { "text": "$msg", "languageCode": "en" }}}';
+    var dataJson = jsonDecode(data);
+    var response = await http.post(url, body: jsonEncode(dataJson), headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    print("reached");
+    return response.body;
+  }
+
   @override
   void initState() {
     super.initState();
+    DateTime time = DateTime.now();
+    String date = DateFormat('yyyy-MM-dd hh:mm').format(time);
+    _respondMsg('holaa', 'left', date);
+
   }
 
   @override

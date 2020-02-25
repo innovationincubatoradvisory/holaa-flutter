@@ -1,12 +1,14 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:holaa/Constant/Constant.dart';
 import 'package:holaa/Screens/ChatScreen.dart';
+import 'package:holaa/Utils/auth.dart';
 
 main() {
+  String projectName = "medrabits";
+  var auth = new Auth(projectName);
   runApp(new MaterialApp(
-    title: 'Fluter',
+    title: 'Holaa',
     debugShowCheckedModeBanner: false,
     theme: new ThemeData(
       accentColor: Colors.blue,
@@ -14,9 +16,9 @@ main() {
       primaryColorDark: Colors.white,
       fontFamily: 'Gamja Flower',
     ),
-    home: new MyChatScreen(),
+    home: new MyChatScreen(auth: auth),
     routes: <String, WidgetBuilder>{
-      CHAT_SCREEN: (BuildContext context) => new MyChatScreen()
+      '/MyChatScreen': (BuildContext context) => new MyChatScreen(auth: auth),
     },
   ));
 }
