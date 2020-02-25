@@ -85,8 +85,8 @@ class _MyChatState extends State<MyChatScreen> {
                                   width: 48.0,
                                   height: 48.0,
                                   child: new IconButton(
-                                      icon: Image.asset(
-                                          "assets/images/send_out.png"),
+                                      icon: Icon(Icons.send,
+                                      color: Color(0xff4b2e60)),
                                       onPressed: () => _sendMsg(
                                           _textController.text,
                                           'right',

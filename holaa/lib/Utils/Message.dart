@@ -23,12 +23,7 @@ class Message extends StatelessWidget {
                       children: <Widget>[
                         //for left corner
 
-                        new Image.asset(
-                          'assets/images/in.png',
-                          fit: BoxFit.scaleDown,
-                          width: 30.0,
-                          height: 30.0,
-                        ),
+                        
 
                         new Container(
                           margin: EdgeInsets.only(left: 6.0),
@@ -102,12 +97,7 @@ class Message extends StatelessWidget {
                       alignment: Alignment.topRight,
                       children: <Widget>[
                         //for right corner
-                        new Image.asset(
-                          'assets/images/out.png',
-                          fit: BoxFit.scaleDown,
-                          width: 30.0,
-                          height: 30.0,
-                        ),
+                        
 
                         new Container(
                           margin: EdgeInsets.only(right: 6.0),
