@@ -36,3 +36,5 @@ import 'package:holaa/holaa.dart';
       context: context, 
       projectName: "<YOUR_PROJECT_NAME>");
 ```
+## Output
+![Alt Text](holaa/assets/output.gif)
