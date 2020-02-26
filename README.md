@@ -23,9 +23,16 @@ Holaa is an AI enabled chatbot that can be used for a range of differnet tasks f
 
 3. Import the package
 
-  `import 'package:holaa/holaa.dart';`
+  ```dart 
+import 'package:holaa/holaa.dart';
+```
 
----
 
 ## Setup
 
+
+```dart
+ Holaa.holaaChat( 
+      context: context, 
+      projectName: "<YOUR_PROJECT_NAME>");
+```
